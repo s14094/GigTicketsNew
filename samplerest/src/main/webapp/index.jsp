@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello world
+<a href="AddUser.jsp">Zarejestruj sie</a>
 </body>
 </html>
