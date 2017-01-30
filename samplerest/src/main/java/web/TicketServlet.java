@@ -23,9 +23,10 @@ public class TicketServlet extends HttpServlet {
 		ticket.setName(request.getParameter("name"));
 		ticket.setDate(request.getParameter("date"));
 		ticket.setLocation(request.getParameter("location"));
-		ticket.setPrice(request.getParameter("price"));
-		ticket.setQuantity(request.getParameter("quantity"));
-		ticket.setInformation(request.getParameter("information"));
+		ticket.setPrice(Integer.parseInt(request.getParameter("price")));
+		ticket.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+		//ticket.setInformation(request.getParameter("information"));
+		
 		HttpSession session = request.getSession();
 		session.setAttribute(SessionKey.ticket, ticket);
 		

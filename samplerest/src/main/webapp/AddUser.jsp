@@ -127,7 +127,7 @@ label.light {
     </head>
     <body>
 
-      <form action="userServlet" method="post">
+      <form action="userServlet" method="get">
       
         <h1>Sign Up</h1>
         

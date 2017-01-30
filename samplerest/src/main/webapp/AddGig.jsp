@@ -127,7 +127,7 @@ label.light {
     </head>
     <body>
 
-      <form action="gigServlet" method="post">
+      <form action="gigServlet" method="get">
       
         <h1>Create Gig</h1>
         
