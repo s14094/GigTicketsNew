@@ -127,7 +127,7 @@ label.light {
     </head>
     <body>
 
-      <form action="index.html" method="post">
+      <form action="ticketServlet" method="post">
       
         <h1>Add Ticket</h1>
         
@@ -147,7 +147,7 @@ label.light {
 
 
           <label for="name">Price:</label>
-          <input type="text" id="price" name="price">
+          <input type="number" id="price" name="price">
 
           <label for="name">Quantity:</label>
           <input type="text" id="quantity" name="quantity">

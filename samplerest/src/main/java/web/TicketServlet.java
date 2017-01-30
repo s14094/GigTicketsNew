@@ -9,21 +9,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import domain.model.User;
+import domain.model.Ticket;
 
-@WebServlet("/userServlet")
-public class UserServlet extends HttpServlet {
+@WebServlet("/ticketServlet")
+public class TicketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request,
 						 HttpServletResponse response)
 			throws ServletException, IOException {
 
-		User user = new User();
-		user.setUsername(request.getParameter("username"));
-		user.setSurname(request.getParameter("surname"));
+		Ticket ticket = new Ticket();
+		ticket.setName(request.getParameter("name"));
+		ticket.setDate(request.getParameter("date"));
+		ticket.setLocation(request.getParameter("location"));
+		ticket.setPrice(request.getParameter("price"));
+		ticket.setQuantity(request.getParameter("quantity"));
+		ticket.setInformation(request.getParameter("information"));
 		HttpSession session = request.getSession();
-		session.setAttribute(SessionKey.user, user);
+		session.setAttribute(SessionKey.ticket, ticket);
 		
 		response.sendRedirect("index.jsp");
 		

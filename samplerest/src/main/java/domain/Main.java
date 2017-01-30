@@ -32,9 +32,9 @@ public class Main {
 		ticket1.setQuantity(500);
 		ticket1.setInformation(gig1);
 		
-		//User user1 = new User();
-		//user1.setUsername("imie");
-		//user1.setSurname("nazwisko");
+		User user1 = new User();
+		user1.setUsername("imie");
+		user1.setSurname("nazwisko");
 		
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb");
@@ -42,7 +42,7 @@ public class Main {
 			IRepositoryCatalog catalog = new RepositoryCatalog(connection, uow);
 			catalog.Gig().add(gig1);
 			catalog.Ticket().add(ticket1);
-			//catalog.User().add(user1);
+			catalog.User().add(user1);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
