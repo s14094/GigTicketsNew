@@ -1,6 +1,25 @@
 package domain.model;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
+@Entity
+@NamedQueries(
+		{
+			@NamedQuery(name= "reader.all", query=" SELECT r FROM Reader r")
+		})
 public class Ticket implements IHaveId {
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 
 	private int id;
 	private String name;
@@ -10,18 +29,7 @@ public class Ticket implements IHaveId {
 	private int quantity;
 	private Gig information;
 
-	public Ticket(Integer id, String name, String date, String location, Integer price, Integer quantity) {
-		this.id = id;
-		this.name = name;
-		this.date = date;
-		this.location = location;
-		this.price = price;
-		this.quantity = quantity;
-	}
 
-	public Ticket() {
-
-	}
 
 	public int getId() {
 		return id;
