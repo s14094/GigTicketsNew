@@ -30,7 +30,6 @@ public class Main {
 		ticket1.setLocation("Warszawa");
 		ticket1.setPrice(30);
 		ticket1.setQuantity(500);
-		ticket1.setInformation(gig1);
 		
 		User user1 = new User();
 		user1.setUsername("imie");

@@ -30,7 +30,7 @@ public class TicketServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute(SessionKey.ticket, ticket);
 		
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("DbServletTicket");
 		
 	}
 }

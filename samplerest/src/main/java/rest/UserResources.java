@@ -15,14 +15,20 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 
+import domain.model.Ticket;
 import domain.model.User;
+import rest.dto.TicketDto;
+import rest.dto.UserDto;
 
 
 @Path("/user")
 @Stateless
 public class UserResources {
 
+	Mapper mapper = new DozerBeanMapper();
 	
 	 @PersistenceContext
 	 EntityManager entityManager;
@@ -30,14 +36,14 @@ public class UserResources {
 	 @GET
 	  @Produces(MediaType.APPLICATION_JSON)
 	    public Response getAll(){
-	    	List<User> result = new ArrayList<User>();
+	    	List<UserDto> result = new ArrayList<UserDto>();
 	    	for(User u: entityManager.createNamedQuery("user.all",User.class).getResultList())
 	    	{
-	        	result.add(u);
+	    		result.add(mapper.map(u, UserDto.class));
 	        }
 
 	       
-	        return Response.ok(new GenericEntity<List<User>>(result){}).build();
+	        return Response.ok(new GenericEntity<List<UserDto>>(result){}).build();
 	    }
 	 
 	 @POST
@@ -53,7 +59,7 @@ public class UserResources {
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public Response get(@PathParam("id") int id) {
 	    	User result = entityManager.createNamedQuery("user.id", User.class)
-	                .setParameter("userId", id)
+	                .setParameter("id", id)
 	                .getSingleResult();
 	        if (result == null) {
 	            return Response.status(404).build();

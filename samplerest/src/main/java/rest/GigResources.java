@@ -15,15 +15,18 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 
 import domain.model.Gig;
+import rest.dto.GigDto;
 
 
 @Path("/gig")
 @Stateless
 public class GigResources {
 
-	
+	Mapper mapper = new DozerBeanMapper();
 	
 	 @PersistenceContext
 	 EntityManager entityManager;
@@ -31,14 +34,14 @@ public class GigResources {
 	 @GET
 	  @Produces(MediaType.APPLICATION_JSON)
 	    public Response getAll(){
-	    	List<Gig> result = new ArrayList<Gig>();
+	    	List<GigDto> result = new ArrayList<GigDto>();
 	    	for(Gig g: entityManager.createNamedQuery("gig.all",Gig.class).getResultList())
 	    	{
-	        	result.add(g);
+	    		result.add(mapper.map(g, GigDto.class));
 	        }
 
 	       
-	        return Response.ok(new GenericEntity<List<Gig>>(result){}).build();
+	        return Response.ok(new GenericEntity<List<GigDto>>(result){}).build();
 	    }
 	 
 	 @POST
@@ -56,7 +59,7 @@ public class GigResources {
 	    public Response get(@PathParam("id") int id) {
 		 Gig result = entityManager
 	                .createNamedQuery("gig.id", Gig.class)
-	                .setParameter("gigId", id)
+	                .setParameter("id", id)
 	                .getSingleResult();
 	        if (result == null) {
 	            return Response.status(404).build();

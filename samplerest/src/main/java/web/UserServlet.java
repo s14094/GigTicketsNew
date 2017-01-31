@@ -25,7 +25,7 @@ public class UserServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute(SessionKey.user, user);
 		
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("DbServletUser");
 		
 	}
 }

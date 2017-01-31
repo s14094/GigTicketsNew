@@ -61,10 +61,6 @@ public class TicketRepository extends RepositoryBase<Ticket> implements ITicketR
 		return "SELECT * FROM ticket where date=?";
 	}
 
-	protected String getInformationSql() {
-		return "SELECT * FROM ticket where INFORMATION_ID=?";
-	}
-
 	@Override
 	protected void setUpdate(Ticket ticket) throws SQLException {
 		update.setString(1, ticket.getName());
@@ -72,7 +68,6 @@ public class TicketRepository extends RepositoryBase<Ticket> implements ITicketR
 		update.setString(3, ticket.getLocation());
 		update.setInt(4, ticket.getPrice());
 		update.setInt(5, ticket.getQuantity());
-		update.setObject(6, ticket.getInformation());
 	}
 
 	@Override
@@ -82,7 +77,6 @@ public class TicketRepository extends RepositoryBase<Ticket> implements ITicketR
 		insert.setString(3, ticket.getLocation());
 		insert.setInt(4, ticket.getPrice());
 		insert.setInt(5, ticket.getQuantity());
-		insert.setObject(6, ticket.getInformation());
 	}
 
 	private List<Ticket> searchBy(String value) {

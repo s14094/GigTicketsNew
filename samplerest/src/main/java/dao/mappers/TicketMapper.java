@@ -15,7 +15,6 @@ public class TicketMapper implements IMapResultSetIntoEntity<Ticket> {
 		ticket.setLocation(rs.getString("location"));
 		ticket.setPrice(rs.getInt("price"));
 		ticket.setQuantity(rs.getInt("quantity"));
-		ticket.setInformation((Gig)rs.getObject("ADRESS"));
 		return ticket;
 	}
 }

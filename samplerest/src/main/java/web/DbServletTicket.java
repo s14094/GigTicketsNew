@@ -22,12 +22,12 @@ import domain.model.Ticket;
 import domain.model.User;
 
 
-@WebServlet("/DbServlet")
-public class DbServlet extends HttpServlet {
+@WebServlet("/DbServletTicket")
+public class DbServletTicket extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public DbServlet() {
+    public DbServletTicket() {
         super();
      
     }
@@ -40,15 +40,9 @@ public class DbServlet extends HttpServlet {
 			IUnitOfWork uow = new UnitOfWork(connection);
 			IRepositoryCatalog catalog = new RepositoryCatalog(connection, uow);
 			HttpSession session = request.getSession();
-			User user = (User) session.getAttribute("user");
-			Gig gig = (Gig) session.getAttribute("gig");
 			Ticket ticket = (Ticket) session.getAttribute("ticket");
-			catalog.User().add(user);
-			catalog.Gig().add(gig);
 			catalog.Ticket().add(ticket);
 			catalog.save();
-			session.removeAttribute("user");
-			session.removeAttribute("gig");
 			session.removeAttribute("ticket");
 			
 			response.sendRedirect("index.jsp");

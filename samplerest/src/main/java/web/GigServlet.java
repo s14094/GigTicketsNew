@@ -26,7 +26,7 @@ public class GigServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute(SessionKey.gig, gig);
 		
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("DbServletGig");
 		
 	}
 }

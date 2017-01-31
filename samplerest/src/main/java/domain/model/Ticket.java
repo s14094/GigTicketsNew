@@ -6,28 +6,26 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
 @Entity
-@NamedQueries(
-		{
-			@NamedQuery(name= "reader.all", query=" SELECT r FROM Reader r")
-		})
+@Table(name="ticket")
+@NamedQueries({
+       @NamedQuery(name = "ticket.all", query = "SELECT t FROM Ticket t"),
+       @NamedQuery(name = "ticket.id", query = "SELECT t FROM Ticket t WHERE t.id=:id")
+})
 public class Ticket implements IHaveId {
 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
 	private int id;
 	private String name;
 	private String date;
 	private String location;
 	private int price;
 	private int quantity;
-	private Gig information;
 
 
 
@@ -77,14 +75,6 @@ public class Ticket implements IHaveId {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-
-	public Gig getInformation() {
-		return information;
-	}
-
-	public void setInformation(Gig information) {
-		this.information = information;
 	}
 
 }

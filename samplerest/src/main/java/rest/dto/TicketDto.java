@@ -11,8 +11,6 @@ public class TicketDto {
 		private String location;
 		private int price;
 		private int quantity;
-		private GigDto information;
-
 
 
 		public int getId() {
@@ -61,14 +59,6 @@ public class TicketDto {
 
 		public void setQuantity(int quantity) {
 			this.quantity = quantity;
-		}
-
-		public GigDto getInformation() {
-			return information;
-		}
-
-		public void setInformation(GigDto information) {
-			this.information = information;
 		}
 
 	}

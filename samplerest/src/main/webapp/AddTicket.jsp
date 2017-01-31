@@ -152,8 +152,8 @@ label.light {
           <label for="name">Quantity:</label>
           <input type="text" id="quantity" name="quantity">
 
-          <label for="bio">Information:</label>
-          <textarea id="information" name="information"></textarea>
+          <!--<label for="bio">Information:</label>
+          <textarea id="information" name="information"></textarea>-->
             
         </fieldset>
         <button type="submit">Create</button>

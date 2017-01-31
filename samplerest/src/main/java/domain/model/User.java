@@ -10,20 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
 @Entity
-@NamedQueries(
-		{
-			@NamedQuery(name= "location.all", query=" SELECT l FROM Location l")
-		})
+@Table(name="user")
+@NamedQueries({
+       @NamedQuery(name = "user.all", query = "SELECT u FROM User u"),
+       @NamedQuery(name = "user.id", query = "SELECT u FROM User u WHERE u.id=:id")
+})
 public class User implements IHaveId{
 	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private int id;
 	private String username;
 	private String surname;
